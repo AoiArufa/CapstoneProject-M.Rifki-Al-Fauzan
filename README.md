@@ -1,25 +1,25 @@
 # Capstone Project: LLM Applications with Langchain and Data Analysis
 
 ## Project Overview
-Proyek ini menunjukkan penerapan Model Bahasa Besar (LLM) untuk tugas pemrosesan bahasa alami dan integrasinya dengan alat analisis data. Inti dari proyek ini melibatkan penggunaan pustaka `langchain` untuk berinteraksi dengan LLM yang di-host di Replicate, melakukan tugas-tugas seperti klasifikasi teks, ekstraksi informasi, dan kueri bahasa alami dari Pandas DataFrame.
+This project demonstrates the application of Large Language Models (LLMs) for natural language processing tasks and their integration with data analysis tools. The core of the project involves using the `langchain` library to interact with an LLM hosted on Replicate, performing tasks such as text classification, information extraction, and natural language querying of Pandas DataFrames.
 
 ## Raw Dataset
-Proyek ini menggunakan dataset yang dimuat dari `Archive1.zip`. File CSV ini berisi berbagai informasi terkait film termasuk Judul, Tahun, Sutradara, Durasi, Peringkat, Suara, Deskripsi, Bahasa, Negara, Anggaran_USD, BoxOffice_USD, Genre, Perusahaan_Produksi, Peringkat_Konten, Aktor_Utama, Jumlah_Penghargaan, dan Ulasan_Kritikus.
+The project utilizes a dataset loaded from `Archive1.zip`. This CSV file contains various movie-related information including Title, Year, Director, Duration, Rating, Votes, Description, Language, Country, Budget_USD, BoxOffice_USD, Genre, Production_Company, Content_Rating, Lead_Actor, Num_Awards, and Critic_Reviews.
 
 ## Insights & Findings
-Buku catatan ini menunjukkan beberapa wawasan utama mengenai kemampuan LLM dan integrasinya dengan analisis data:
+The notebook demonstrates several key insights into the capabilities of LLMs and their integration with data analysis:
 
-* **Text Classification**: LLM dapat secara efektif mengklasifikasikan ulasan pelanggan ke dalam kategori sentimen (Positif, Negatif, Campuran) berdasarkan teks yang diberikan. Misalnya, "Kamera ponsel ini luar biasa, fotonya sangat jernih bahkan dalam kondisi kurang cahaya." diklasifikasikan sebagai "Positif".
-* **Information Extraction**: LLM mampu mengekstrak entitas spesifik seperti nama, usia, dan pekerjaan dari deskripsi teks yang tidak terstruktur dan memformatnya menjadi objek JSON yang terstruktur. Contohnya termasuk mengekstraksi detail untuk "JessNoLimit", "Windah Basudara", dan "MiawAug".
-* **Natural Language Interaction with DataFrames**: `create_pandas_dataframe_agent` memungkinkan pengguna untuk mengkueri dan memvisualisasikan data dalam Pandas DataFrame menggunakan perintah bahasa alami. Ini secara signifikan menurunkan hambatan bagi non-programmer untuk berinteraksi dengan data.
-* **LLM Debugging and Self-Correction**: Agen Pandas menunjukkan kemampuan untuk mengidentifikasi impor yang hilang (seperti `matplotlib.pyplot`) dan mengoreksi kodenya sendiri untuk berhasil mengeksekusi perintah plotting.
-* **Handling Empty Data**: Ketika mencoba memplot peringkat untuk tahun seperti 2015, di mana tidak ada data yang ada dalam cuplikan yang disediakan, agen dengan benar mengidentifikasi bahwa plot tidak akan menampilkan bilah, menunjukkan nol peringkat untuk tahun tersebut.
+* **Text Classification**: The LLM can effectively classify customer reviews into sentiment categories (Positive, Negative, Mixed) based on the provided text. For instance, "Kamera ponsel ini luar biasa, fotonya sangat jernih bahkan dalam kondisi kurang cahaya." is classified as "Positive".
+* **Information Extraction**: The LLM is capable of extracting specific entities like name, age, and job from unstructured biographical text and formatting them into structured JSON objects. Examples include extracting details for "JessNoLimit", "Windah Basudara", and "MiawAug".
+* **Natural Language Interaction with DataFrames**: The `create_pandas_dataframe_agent` allows users to query and visualize data within a Pandas DataFrame using natural language prompts. This significantly lowers the barrier for non-programmers to interact with data.
+* **LLM Debugging and Self-Correction**: The Pandas agent demonstrates the ability to identify missing imports (like `matplotlib.pyplot`) and correct its own code to successfully execute a plotting command.
+* **Handling Empty Data**: When attempting to plot ratings for a year like 2015, for which no data exists in the provided snippet, the agent correctly identifies that the plot will show no bars, indicating zero ratings for that year.
 
 ## AI Support Explanation
-Dukungan AI utama dalam proyek ini disediakan oleh Model Bahasa Besar `ibm-granite/granite-3.3-8b-instruct`, yang diakses melalui platform Replicate. LLM ini digunakan melalui kelas `langchain_community.llms.Replicate`.
+The core AI support in this project is provided by the `ibm-granite/granite-3.3-8b-instruct` Large Language Model, accessed via the Replicate platform. This LLM is utilized through the `langchain_community.llms.Replicate` class.
 
-AI membantu dengan cara-cara berikut:
+The AI assists in the following ways:
 
-* **Natural Language Understanding (NLU)**: LLM memproses masukan teks seperti manusia (misalnya, ulasan pelanggan, deskripsi biografi, kueri analisis data).
-* **Natural Language Generation (NLG)**: LLM menghasilkan respons yang dapat dibaca manusia, termasuk label klasifikasi, data JSON terstruktur, dan penjelasan tentang tindakan atau temuannya.
-* **Problem-Solving (Agentic Behavior)**: `pandas_dataframe_agent` mencontohkan perilaku agen di mana LLM, bersama dengan alat (Python REPL), merencanakan dan melaksanakan langkah-langkah untuk mencapai tujuan pengguna, seperti menghasilkan plot dari DataFrame. Ini juga dapat melakukan koreksi diri dengan mengidentifikasi dan memperbaiki kesalahan dalam kode yang dihasilkannya.
+* **Natural Language Understanding (NLU)**: The LLM processes human-like text inputs (e.g., customer reviews, biographical descriptions, data analysis queries).
+* **Natural Language Generation (NLG)**: The LLM generates human-readable responses, including classification labels, structured JSON data, and explanations of its actions or findings.
+* **Problem-Solving (Agentic Behavior)**: The `pandas_dataframe_agent` exemplifies agentic behavior where the LLM, in conjunction with tools (Python REPL), plans and executes steps to achieve a user's goal, such as generating a plot from a DataFrame. It can also perform self-correction by identifying and fixing errors in its generated code.
